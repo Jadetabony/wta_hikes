@@ -77,6 +77,7 @@ def get_time_drive(string, google_key):
 
 def cleanData(data):
     dropCols(data)
+    data['hike_id'] = range(len(data))
     data['total_dist'] = data['length'].apply(total_dst)
     data['number_votes'] = data['number_votes'].apply(num_votes)
     data['pass(0-no pass, 1- pass required)'] = [0 if 'No pass' in x else 1for x in data['which_pass']]

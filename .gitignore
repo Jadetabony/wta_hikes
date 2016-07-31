@@ -4,3 +4,4 @@ $ cat .gitignore
 .ipynb_checkpoints
 .DS_Store
 journal
+*.pyc
