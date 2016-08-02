@@ -80,10 +80,10 @@ def cleanData(data):
     data['hike_id'] = range(len(data))
     data['total_dist'] = data['length'].apply(total_dst)
     data['number_votes'] = data['number_votes'].apply(num_votes)
-    data['pass(0-no pass, 1- pass required)'] = [0 if 'No pass' in x else 1for x in data['which_pass']]
+    data['pass(0-no pass, 1- pass required)'] = [0 if 'No pass' in x else 1 for x in data['which_pass']]
     data['stars'] = data['rating'].apply(stars)
     data['lat_long'] = data['latlong'].apply(latlong)
     data['time_from_seattle'] = data['lat_long'].apply(get_time_drive)
     data.replace('NA', np.nan, inplace=True)
     data.replace('NR', np.nan, inplace=True)
-    data.to_csv('washington_hikes_clean.csv', encoding='utf-8')
+    data.to_csv('washington_hikes_clean.csv', encoding='utf-8', index_col=0)

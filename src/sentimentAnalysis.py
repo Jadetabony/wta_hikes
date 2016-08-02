@@ -1,25 +1,65 @@
-"""Takes hike text and returns the sentiment rating."""
-
 from __future__ import division
 from textblob import TextBlob
+import numpy as np
 import string
 import re
 
 
 def detect_sentiment(text):
+    """Parses through text data to make it readable by TextBlob and outputs the
+    sentiment rating according to TextBlob [-1, 1].
+
+    **Input parameters**
+    ------------------------------------------------------------------------------
+    text: string.
+
+    **Output**
+    ------------------------------------------------------------------------------
+    textblob sentiment: float between [-1, 1]
+    """
     text = re.sub(r'/\u\d+', '', text)
     text = ''.join([char for char in text if char not in string.punctuation])
     return TextBlob(text.encode('ascii', 'ignore') ).sentiment.polarity
 
-def setRating(sentiment):
-    """Sets rating based on textblob sentiment"""
-    if sentiment < 0.0741324307501:
+
+def useRating(num, cutoff):
+    """Assigns 1-5 star rating based on provided cutoff points.
+
+    **Input parameters**
+    ------------------------------------------------------------------------------
+    num: float. Sentiment analysis.
+
+    cutoff: list.  n=5.  List of cutoff values for ratings.
+
+    **Output**
+    ------------------------------------------------------------------------------
+    Star rating: int. [1, 2, 3, 4 or 5]
+    """
+    if num < cutoff[0]:
         return 1
-    elif sentiment < 0.12879503367:
+    elif num < cutoff[1]:
         return 2
-    elif sentiment < 0.179433020683:
+    elif num < cutoff[2]:
         return 3
-    elif sentiment < 0.25:
+    elif num < cutoff[3]:
         return 4
     else:
         return 5
+
+
+def setRating(df, sentiment_column):
+    """Determines cutoff points using the values of the column and then assigns
+    rating by calling useRating function.
+
+    **Input parameters**
+    ------------------------------------------------------------------------------
+    df: pandas dataframe.
+
+    sentiment_column: string.  Column name for sentiment ratings.
+
+    **Output**
+    ------------------------------------------------------------------------------
+    List of ratings (int) between [1,5]
+    """
+    cutoffs = [np.percentile(df[sentiment_column], x) for x in [20, 40, 60, 80]]
+    return [useRating(num, cutoffs) for num in df[sentiment_column]]
