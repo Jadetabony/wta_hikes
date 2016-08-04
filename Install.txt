@@ -1,0 +1,17 @@
+requests
+bs4
+cPickle
+pymongo
+MongoDB
+re
+pandas
+numpy
+matplotlib
+string
+textblob
+seaborn
+graphlab
+sklearn
+collections
+enchant
+nltk

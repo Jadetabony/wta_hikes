@@ -51,5 +51,5 @@ if __name__ == '__main__':
 
     model = unpickleRecommender('pickle/recommender.pkl')
     ider = unpickleIder('pickle/ider.pkl')
-    recs = getRecommendation(model, ider, item_data, with_rec=True)
+    recs = getRecommendation(model, ider, item_data, with_rec=False)
     printRecs(recs)
