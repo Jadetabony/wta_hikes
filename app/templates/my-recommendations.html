@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Washington Trail Recommender</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="static/css/creative.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="/">Rec The Trail</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="/">Home</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="">Blog</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">The Backbones</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Hikes you might like</h2>
+                      <hr class="primary">
+                </div>
+            </div>
+        </div>
+            <div class="container">
+                <div class="row">
+                  <table class="table" id="recommendations-table">
+                               <tr>
+                                   <th id='recommendations-table'>Hike Name</th>
+                                   <th id='recommendations-table'>Hike Region</th>
+                                   <th id='recommendations-table'>Total Distance (miles)</th>
+                                   <th id='recommendations-table'>Elevation Gain (ft)</th>
+                                   <th id='recommendations-table'>Drive Time from Seattle (minutes)</th>
+                                   <th id='recommendations-table'>Pass Required?</th>
+                               </tr>
+                               {% for r in recs %}
+                               <tr>
+                                   <td><b><a href={{r.url}} target="_blank">{{r.name}}</a></b></td>
+                                   <td>{{r.region}}</td>
+                                   <td>{{r.total_dist}}</td>
+                                   <td>{{r.elevation}}</td>
+                                   <td>{{r.time_from_seattle}}</td>
+                                   <td>{{r.pass_required}}</td>
+                               </tr>
+                               {% endfor %}
+                       </table>
+                     <a href="/new-user" class="btn btn-primary btn-xl page-scroll">Search Another!</a>
+                </div>
+            </div>
+      </section>
+
+
+
+
+     <section id="about">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-12 text-center">
+                     <h2 class="section-heading">Behind the Project</h2>
+                     <p class="section-heading">Interested in learning more about any step?  Click on the image!</p>
+                     <hr class="primary">
+                 </div>
+             </div>
+         </div>
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-3 col-md-6 text-center">
+                     <div class="service-box">
+                       <a href="https://github.com/Jadetabony/wta_hikes/blob/project/CrispDM.md">
+                         <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                         <h3>CRISP-DM</h3>
+                         </a>
+                         <p class="text-muted">Business Understanding</br>Data Understanding</br>Data Preparation </br>Modeling</br> Evaluation</br>Deployment</p>
+                     </div>
+                 </div>
+                 <div class="col-lg-3 col-md-6 text-center">
+                     <div class="service-box">
+                       <a href="https://github.com/Jadetabony/wta_hikes/tree/project">
+                         <i class="fa fa-4x fa-gears text-primary sr-icons"></i>
+                         <h3>Python</h3>
+                         </a>
+                         <p class="text-muted">Requests + BeautifulSoup</br>MongoDB + PyMongo</br>Pandas</br>Scikit-Learn</br>Plotly</br>Flask</p>
+                     </div>
+                 </div>
+                 <div class="col-lg-3 col-md-6 text-center">
+                     <div class="service-box">
+                         <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+                         <h3>Sentiment Analysis</h3>
+                         <p class="text-muted">TextBlob</br>Dato GraphLab</br>Sentiment Analysis</br>Trained on Scraped Data</p>
+                     </div>
+                 </div>
+                 <div class="col-lg-3 col-md-6 text-center">
+                     <div class="service-box">
+                         <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                         <h3>Dato GraphLab</h3>
+                         <p class="text-muted"> Ranking Factorization Model</br>Item Content Recommender</br>Finding latent patterns in the </br>forest of ratings.</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Interested in the data science behind the recommender? </h2>
+                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Checkout my blog series on it</a>
+            </div>
+        </div>
+    </aside>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Want to get in touch?</h2>
+                    <hr class="primary">
+                    <p>Here are a couple other places to find me!</p>
+                      <div class="row">
+                          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                              <ul class="list-inline text-center">
+                                  <li>
+                                      <a href="https://www.linkedin.com/in/jadetabony">
+                                          <span class="fa-stack fa-lg">
+                                              <i class="fa fa-circle fa-stack-2x"></i>
+                                              <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                          </span>
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="https://www.instagram.com/theclutteredgearroom/">
+                                          <span class="fa-stack fa-lg">
+                                              <i class="fa fa-circle fa-stack-2x"></i>
+                                              <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                          </span>
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="https://twitter.com/TrailWonderland">
+                                          <span class="fa-stack fa-lg">
+                                              <i class="fa fa-circle fa-stack-2x"></i>
+                                              <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                          </span>
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="https://github.com/jadetabony">
+                                          <span class="fa-stack fa-lg">
+                                              <i class="fa fa-circle fa-stack-2x"></i>
+                                              <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                          </span>
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="static/vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="static/js/creative.min.js"></script>
+
+</body>
+
+</html>

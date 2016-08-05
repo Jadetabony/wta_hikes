@@ -5,4 +5,4 @@ $ cat .gitignore
 .DS_Store
 journal
 *.pyc
-app
+Untitled.ipynb
