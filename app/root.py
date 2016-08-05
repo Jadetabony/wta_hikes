@@ -1,5 +1,4 @@
 from flask import Flask, url_for, request, render_template, Markup,redirect
-from util.forms  import ratingForm
 from pymongo import MongoClient
 import graphlab as gl
 import pandas as pd

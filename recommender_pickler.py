@@ -30,7 +30,7 @@ def norm(df, col):
 if __name__ == '__main__':
     # Load and prepare the ratings dataframe
     df = pd.read_csv(open('data/tripReports.csv', 'rU'), encoding='utf-8', engine='c')
-    df = df.drop(labels=['Unnamed: 0', 'Name', 'Text', 'Date','Creator', 'TextBlobSentiment', 'GraphLabSentiment', 'TrainedModelSentiment'], axis=1)
+    df = df.drop(labels=['Unnamed: 0', 'hike_name', 'Text', 'Date','Creator'], axis=1)
     df = df.dropna()
     df['hike_id'] = df['hike_id'].fillna(np.nan).astype(int)
     df['author_id'] = df['author_id'].fillna(np.nan).astype(int)
@@ -38,7 +38,8 @@ if __name__ == '__main__':
 
     # Load and prepare the item dataframe
     item_data = pd.read_csv('data/itemData.csv')
-    item_data = item_data.drop(labels=['Unnamed: 0'], axis=1)
+    item_data = item_data.drop(labels=['Unnamed: 0', 'hike_name'], axis=1)
+    item_data.head()
     norm(item_data, 'elevation gain')
     norm(item_data, 'time_from_seattle')
     norm(item_data, 'numReports')
@@ -47,5 +48,5 @@ if __name__ == '__main__':
     item_sf = gl.SFrame(item_data)
 
     model = buildFinalRecommender(sf, item_sf)
-    pickleModel(model, 'pickle/recommender.pkl')
+    pickleModel(model, 'app/pickle/recommender.pkl')
     print "Recommendation model pickled"

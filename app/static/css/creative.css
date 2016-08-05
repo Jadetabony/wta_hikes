@@ -170,7 +170,7 @@ header .header-content {
   width: 100%;
 }
 header .header-content .header-content-inner h1 {
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
@@ -181,7 +181,7 @@ header .header-content .header-content-inner hr {
 }
 header .header-content .header-content-inner p {
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: white;
   font-size: 16px;
   margin-bottom: 50px;
 }
