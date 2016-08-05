@@ -18,17 +18,6 @@ def buildFinalRecommender(sf, item_sf):
     return model
 
 
-def buildItemContentRecommender(sf, item_sf=None):
-    """Creates the recommender model from sf and item_sf.
-
-    Parameters:
-
-    sf: GraphLab SFrame.  Dataframe of hike id, user id and ratings.
-    item_sf: GraphLab SFrame.  Dataframe of the hike information.
-    """
-    model = gl.recommender.item_content_recommender.create(sf, 'hike_id')
-    return model
-
 def pickleModel(model, fname):
     """Pickles model provided."""
     model.save(fname)
@@ -60,6 +49,3 @@ if __name__ == '__main__':
     model = buildFinalRecommender(sf, item_sf)
     pickleModel(model, 'pickle/recommender.pkl')
     print "Recommendation model pickled"
-    item_model = buildItemContentRecommender(item_sf)
-    pickleModel(item_model, 'pickle/itemContRecommender.pkl')
-    print "Item Sim Recommendation model pickled"

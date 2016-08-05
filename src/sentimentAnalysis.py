@@ -38,11 +38,7 @@ def useRating(num, cutoff):
     if num < cutoff[0]:
         return 1
     elif num < cutoff[1]:
-        return 2
-    elif num < cutoff[2]:
         return 3
-    elif num < cutoff[3]:
-        return 4
     else:
         return 5
 
@@ -61,5 +57,5 @@ def setRating(df, sentiment_column):
     ------------------------------------------------------------------------------
     List of ratings (int) between [1,5]
     """
-    cutoffs = [np.percentile(df[sentiment_column], x) for x in [20, 40, 60, 80]]
+    cutoffs = [np.percentile(df[sentiment_column], x) for x in [25,75]]
     return [useRating(num, cutoffs) for num in df[sentiment_column]]
