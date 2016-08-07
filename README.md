@@ -1,12 +1,12 @@
-# The TrailHead Guide
-##  A Washington Trails Association Hike Recommender
+# Rec The Trail
+A Washington Trails Association Hike Recommender
 
 Galvanize Data Science Program - Summer 2016 - Capstone Project - Jade Tabony
 
 
 ## Overview
 
-While the Washington Trails Association (WTA) provides a great resource for people to find hikes in their area that fit their specifications, the site does not have a recommender system to suggest hikes to people based on hikes that they have liked in the past.  I built Rec The Trail (recthetrail.com) to fill exactly that gap.
+While the Washington Trails Association (WTA) provides a great resource for people to find hikes in their area that fit their specifications, the site does not have a recommender system to suggest hikes to people based on hikes that they have liked in the past.  I built [Rec The Trail](recthetrail.com) to fill exactly that gap.
 
 ![Image](img/recthetrail.png)
 
@@ -15,6 +15,8 @@ While the Washington Trails Association (WTA) provides a great resource for peop
 At recthetrail.com, you can input a hike that you like along with either a rating or a trip report and it will give you five hike recommendations!
 
 If you already have a WTA username, you can provide that for tailored refined hike recommendations.
+
+[Recthetrail.com](http://recthetrail.com/) is created using Flask and self-hosted on AWS.
 
 ![image](img/userinput.png)
 
@@ -54,6 +56,34 @@ The models were each evaluated using RMSE, Recall and Precision at N and A/B tes
 
 
 ## Repo Structure
+
+```
+├── code
+|   ├── recommender.py (builds final recommendation system and pickles it)
+|   ├── sentimentAnalysis.py (functions for sentiment analysis and rating system)
+|   └── text_processing.py (functions for text feature extraction)
+|
+├── EDA
+|   ├── EDA.ipynb (hike feature exploration and visualization)
+|   ├── Recommender.ipynb (recommender exploration and comparisons)
+|   └── sentimentAnalysis.ipynb (Sentiment analysis model comparison)
+|
+├── scraper
+|   ├── dataCleaning.py (parses scraped data, extracts meta data and uses Google API)
+|   ├── trainingDataScraper.py (everytrail.com trip review scraper)
+|   ├── tripReportScraper.py (wta.org trip report scraper)
+|   └── wtaScraper.py (wta.org hike scraper)
+|
+├── web_app
+|   ├── pickle (all pickled models used in the app)
+|   ├── static
+|   ├── templates
+|   └── root.py (runs application)
+|
+├── CrispDM.md (write-up of Crisp-DM methodology used for this project)
+├── Install.txt
+└── README.md
+```
 
 
 ## Future Work
