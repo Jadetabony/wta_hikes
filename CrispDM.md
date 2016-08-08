@@ -5,7 +5,7 @@
 
 The steps for CRISP-DM and their respective application to the TrailHead Guide are described below.
 
-[Image of CRISP-DM breakdown]
+![Image of CRISP-DM breakdown](../img/CRISP-DM_Process_Diagram.png)
 
 
 ### Business Understanding
@@ -28,8 +28,8 @@ Ah the favorite task of any data scientist- Data preparation.  This component co
   - Creating dummy variables for hike features such as 'Lakes/Rivers', 'Summits', 'Allows dogs on leash'
   - Applying sentiment analysis to trip report data to determine rating.  The following methods were used:
     * TextBlob polarity sentiment
-    * Dato GraphLab built-in sentiment analysis model
-    * Dato GraphLab sentiment analysis model trained on data scraped from everytrail.com
+    * Turi GraphLab built-in sentiment analysis model
+    * Turi GraphLab sentiment analysis model trained on data scraped from everytrail.com
   - Mapping identification numbers to all hikes and trip report authors
   - Normalize hike item data for use in recommendation model
   - Building rating dataset and item data datasets for the GraphLab models
@@ -57,15 +57,17 @@ Modeling and evaluation was required at three different points in the project: d
 ### Deployment
 The deployment phase of a data science project is the form in which the knowledge gained from the previous steps is communicated or the form in which the data project is released.  In some cases, this may just take the form of a report.  For the TrailHead Guide, what good is a recommendation system if people can't use it? Therefore, I had to also flex my web development skills and developed a web application for people to use.
 
-[Website]
+[Rec The Trail](http://recthetrail.com/)
 
-[Image of the landing page]
+![Image of the landing page](../img/recthetrail.png)
 
 On the TrailHead Guide application, a new user can input a rating from a hike and receive recommendations based on similar hikes.  Additionally, a returning user can come back, add in a new recommendation and get recommendations using the ranking factorization recommender.  The website also has some baseline recommendations for people who don't want to input any ratings.
 
 
 ## Next steps
-
+* Use more advanced techniques on the trip report text to improve sentiment analysis based rating system
+* Refine the web application (add weather report, add gear recommendations such as microspikes if snow is present).
+* Incorporate more filtering options for the use. (Ex. Limit drive time, less popular hike)
 
 
 ## Sources
