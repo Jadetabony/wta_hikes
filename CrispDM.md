@@ -5,7 +5,7 @@
 
 The steps for CRISP-DM and their respective application to the TrailHead Guide are described below.
 
-![Image of CRISP-DM breakdown](../img/CRISP-DM_Process_Diagram.png)
+![Image of CRISP-DM breakdown](img/crispdm.png)
 
 
 ### Business Understanding
@@ -59,7 +59,7 @@ The deployment phase of a data science project is the form in which the knowledg
 
 [Rec The Trail](http://recthetrail.com/)
 
-![Image of the landing page](../img/recthetrail.png)
+![Image of the landing page](img/recthetrail.png)
 
 On the TrailHead Guide application, a new user can input a rating from a hike and receive recommendations based on similar hikes.  Additionally, a returning user can come back, add in a new recommendation and get recommendations using the ranking factorization recommender.  The website also has some baseline recommendations for people who don't want to input any ratings.
 
