@@ -90,3 +90,5 @@ The models were each evaluated using RMSE, Recall and Precision at N and A/B tes
   * Use more advanced techniques on the trip report text to improve sentiment analysis based rating system
   * Refine the web application (add weather report, add gear recommendations such as microspikes if snow is present).
   * Incorporate more filtering options for the use. (Ex. Limit drive time, less popular hike)
+
+## Sources
