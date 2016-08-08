@@ -1,9 +1,9 @@
-# CRISP-DM The TrailHead Guide
+# CRISP-DM Rec The Trail
 ##  A Washington Trails Association Hike Recommender
 
 **The Cross Industry Standard Process for Data Mining (CRISP-DM) describes guidelines for data scientists who develop data products.**  
 
-The steps for CRISP-DM and their respective application to the TrailHead Guide are described below.
+The steps for CRISP-DM and their respective application to Rec The Trail are described below.
 
 ![Image of CRISP-DM breakdown](img/crispdm.png)
 
@@ -55,13 +55,13 @@ Modeling and evaluation was required at three different points in the project: d
 
 
 ### Deployment
-The deployment phase of a data science project is the form in which the knowledge gained from the previous steps is communicated or the form in which the data project is released.  In some cases, this may just take the form of a report.  For the TrailHead Guide, what good is a recommendation system if people can't use it? Therefore, I had to also flex my web development skills and developed a web application for people to use.
+The deployment phase of a data science project is the form in which the knowledge gained from the previous steps is communicated or the form in which the data project is released.  In some cases, this may just take the form of a report.  For Rec The Trail, what good is a recommendation system if people can't use it? Therefore, I had to also flex my web development skills and developed a web application for people to use.
 
 ### [Rec The Trail](http://recthetrail.com/)
 
 ![Image of the landing page](img/recthetrail.png)
 
-On the TrailHead Guide application, a new user can input a rating from a hike and receive recommendations based on similar hikes.  Additionally, a returning user can come back, add in a new recommendation and get recommendations using the ranking factorization recommender.  The website also has some baseline recommendations for people who don't want to input any ratings.
+On Rec The Trail application, a new user can input a rating from a hike and receive recommendations based on similar hikes.  Additionally, a returning user can come back, add in a new recommendation and get recommendations using the ranking factorization recommender.  The website also has some baseline recommendations for people who don't want to input any ratings.
 
 
 ## Next steps
