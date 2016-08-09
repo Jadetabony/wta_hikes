@@ -9,7 +9,7 @@ The steps for CRISP-DM and their respective application to Rec The Trail are des
 
 
 ## Business Understanding
-The business understanding component of CRISP-DM requires collaborating data scientists and business professionals to clearly outline the business problem that they are trying to address.  At this point, the metrics used, definitions of success and timelines should also be established.  While there is not an obvious business application of a hike recommendation website, the goal of this project was to 1) Minimize the time that people are spending searching for a hike on the WTA website and provide them with hikes that will most accurately meet their hiking style.
+The business understanding component of CRISP-DM requires collaborating data scientists and business professionals to clearly outline the business problem that they are trying to address.  At this point, the metrics used, definitions of success and timelines should also be established.  While there is not an obvious business application of a hike recommendation website, the goal of this project was to 1) Minimize the time that people are spending searching for a hike on the WTA website and 2) provide them with hikes that will most accurately meet their hiking style.
 
 
 ## Data Understanding
@@ -38,20 +38,20 @@ Ah the favorite task of any data scientist- Data preparation.  This component co
 ## Modeling
 Modeling and evaluation was required at three different points in the project: determining which hike features to include in the model, modeling sentiment analysis and building a custom rating system, and building the actual recommender system.
 
-### Hike Feature Importance
+##### Hike Feature Importance
 
-### Sentiment analysis
+#### Sentiment analysis
 
-### Building the Recommender System
+#### Building the Recommender System
 
 
 ## Evaluation
 
-### Hike Feature Importance
+#### Hike Feature Importance
 
-### Sentiment analysis
+#### Sentiment analysis
 
-### Building the Recommender System
+#### Building the Recommender System
 
 
 ## Deployment
