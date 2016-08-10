@@ -40,19 +40,26 @@ From the hike description, I vectorized all of the text using TF-IDF.  I then pe
   * Rivers
 
 
-#### Sentiment analysis
+### Sentiment analysis
 
-Due to the lack of individual ratings for each hike, I decided to apply sentiment analysis to each trip report to create a rating system.  I tried a variety of sentiment analysis method, including built-in algorithms such as the TextBlob Polarity and Turi Sentiment Analysis.  After searching for some relevant training data, I found that reviews on everytrail.com all had both text and rating data.  Unfortunately, the data is highly unbalanced and messy.  
+Due to the lack of individual ratings for each hike, I decided to apply sentiment analysis to each trip report to create a rating system.  I tried a variety of sentiment analysis method, including built-in algorithms such as the TextBlob Polarity and Turi Sentiment Analysis.  After searching for some relevant training data, I found that reviews on everytrail.com all had both text and rating data.  Unfortunately, the data is highly unbalanced and messy (some entries were in Turkish).  
 
+Following data cleaning, I tried building my own sentiment analysis models using the following models:
+  * Random Forests
+  * Gradient Boosting
+  * Adaboosting
+    - With the following base estimators:
+      * Multinomial bayes
+      * Decision tree
 
-#### Recommendation System
+### Recommendation System
 
 The recommendation system is implemented using Turi GraphLab (now owned by Apple).  I tried three different types of recommendation systems:
   * Factorization Recommender
   * **Item Content Recommender**
   * **Ranking Factorization Recommender with Item Data**
 
-The models were each evaluated using RMSE, Recall and Precision at N and A/B testing.  The final web app is built using ranking factorization with item data and item content recommenders.
+The models were each evaluated using RMSE, Recall and Precision at N and A/B testing.  The final web app is built using ranking factorization with item data and item content recommenders in absence of preexisting user data.
 
 
 ## Repo Structure
