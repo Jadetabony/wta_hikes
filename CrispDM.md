@@ -111,14 +111,14 @@ On Rec The Trail application, a new user can input a rating from a hike and rece
 
 2) "EveryTrail - Travel Community, IPhone Guides for Sightseeing, Hiking, Walking Tours and More." EveryTrail - Travel Community, IPhone Guides for Sightseeing, Hiking, Walking Tours and More. N.p., n.d. Web. 09 Aug. 2016.
 
-1) Sobhanam, H., & Mariappan, A. K. (2013). Addressing cold start problem in recommender systems using association rules and clustering technique. 2013 International Conference on Computer Communication and Informatics. doi:10.1109/iccci.2013.6466121
+3) Andy Bromberg. (n.d.). Retrieved August 09, 2016, from http://andybromberg.com/sentiment-analysis-python/
 
-2) Debnath, S., Ganguly, N., & Mitra, P. (2008). Feature weighting in content based recommendation system using social network analysis. Proceeding of the 17th International Conference on World Wide Web - WWW '08. doi:10.1145/1367497.1367646
+4) Debnath, S., Ganguly, N., & Mitra, P. (2008). Feature weighting in content based recommendation system using social network analysis. Proceeding of the 17th International Conference on World Wide Web - WWW '08. doi:10.1145/1367497.1367646
 
-3) Turi Machine Learning Platform User Guide. (n.d.). Retrieved August 09, 2016, from https://turi.com/learn/userguide/recommender/choosing-a-model.html
-
-4) Machine Learning Blog & Software Development News. (n.d.). Retrieved August 09, 2016, from http://blog.datumbox.com/machine-learning-tutorial-the-naive-bayes-text-classifier/
-
-5) Andy Bromberg. (n.d.). Retrieved August 09, 2016, from http://andybromberg.com/sentiment-analysis-python/
+5) Machine Learning Blog & Software Development News. (n.d.). Retrieved August 09, 2016, from http://blog.datumbox.com/machine-learning-tutorial-the-naive-bayes-text-classifier/
 
 6) Silva, Nádia, Estevam Hruschka, and Eduardo Hruschka. "Biocom Usp: Tweet Sentiment Analysis with Adaptive Boosting Ensemble." Proceedings of the 8th International Workshop on Semantic Evaluation (SemEval 2014) (2014): n. pag. Web.
+
+7) Sobhanam, H., & Mariappan, A. K. (2013). Addressing cold start problem in recommender systems using association rules and clustering technique. 2013 International Conference on Computer Communication and Informatics. doi:10.1109/iccci.2013.6466121
+
+8) Turi Machine Learning Platform User Guide. (n.d.). Retrieved August 09, 2016, from https://turi.com/learn/userguide/recommender/choosing-a-model.html
