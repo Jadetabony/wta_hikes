@@ -67,7 +67,7 @@ The models were each evaluated using RMSE, Recall and Precision at N and A/B tes
 ```
 ├── code
 |   ├── ider_pickler.py (functions for pickling hike identification)
-|   ├── recommender.py (builds final recommendation system and pickles it)
+|   ├── recommender.py (builds final recommendation systems and pickles it)
 |   └── sentiment_analysis.py (functions for sentiment analysis and rating system)
 |
 ├── EDA
