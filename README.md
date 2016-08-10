@@ -28,7 +28,7 @@ All of the data was stored in MongoDB.
 
 ## Stack
 
-[Image]
+![stack image](img/stack.png)
 
 
 For every hike, I scraped the provided longitude and latitude and used the Google API to calculate the drive time from Seattle.
@@ -42,17 +42,17 @@ From the hike description, I vectorized all of the text using TF-IDF.  I then pe
 
 #### Sentiment analysis
 
-Due to the lack of individual ratings for each hike, I decided to apply sentiment analysis to each trip report to create a rating system.  I tried a variety of sentiment analysis methods....
+Due to the lack of individual ratings for each hike, I decided to apply sentiment analysis to each trip report to create a rating system.  I tried a variety of sentiment analysis method, including built-in algorithms such as the TextBlob Polarity and Turi Sentiment Analysis.  After searching for some relevant training data, I found that reviews on everytrail.com all had both text and rating data.  Unfortunately, the data is highly unbalanced and messy.  
 
 
 #### Recommendation System
 
 The recommendation system is implemented using Turi GraphLab (now owned by Apple).  I tried three different types of recommendation systems:
   * Factorization Recommender
-  * Item Similatiry Recommender
+  * **Item Content Recommender**
   * **Ranking Factorization Recommender with Item Data**
 
-The models were each evaluated using RMSE, Recall and Precision at N and A/B testing.  The final web app is built using ranking factorization with item data.
+The models were each evaluated using RMSE, Recall and Precision at N and A/B testing.  The final web app is built using ranking factorization with item data and item content recommenders.
 
 
 ## Repo Structure
