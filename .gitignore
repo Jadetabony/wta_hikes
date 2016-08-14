@@ -6,4 +6,3 @@ $ cat .gitignore
 journal
 *.pyc
 Untitled.ipynb
-EDA
