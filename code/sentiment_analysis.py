@@ -1,11 +1,17 @@
 from __future__ import division
-from textblob import TextBlob
+import cPickle as picle
 import numpy as np
 import string
 import re
 
 
-def detect_sentiment(text):
+def mongo2PandasClean(mongodb, drop_id=True):
+    df = pd.DataFrame(list(mongodb.find()))
+    if drop_id:
+        del df['_id']
+    return df
+
+def detect_sentiment(text, tfidf, sa_model):
     """Parses through text data to make it readable by TextBlob and outputs the
     sentiment rating according to TextBlob [-1, 1].
 
@@ -15,21 +21,20 @@ def detect_sentiment(text):
 
     **Output**
     ------------------------------------------------------------------------------
-    textblob sentiment: float between [-1, 1]
+    probability of positive sentiment: float between [0, 1]
     """
-    text = re.sub(r'/\u\d+', '', text)
-    text = ''.join([char for char in text if char not in string.punctuation])
-    return TextBlob(text.encode('ascii', 'ignore') ).sentiment.polarity
+    X = tfidf.transform(df['Text'])
+    return model.predict_proba(X)
 
 
-def useRating(num, cutoff):
+def useCutoffs(num, cutoff):
     """Assigns 1-5 star rating based on provided cutoff points.
 
     **Input parameters**
     ------------------------------------------------------------------------------
     num: float. Sentiment analysis.
 
-    cutoff: list.  n=5.  List of cutoff values for ratings.
+    cutoff: list.  n=3.  List of cutoff values for ratings.
 
     **Output**
     ------------------------------------------------------------------------------
@@ -58,4 +63,21 @@ def setRating(df, sentiment_column):
     List of ratings (int) between [1,5]
     """
     cutoffs = [np.percentile(df[sentiment_column], x) for x in [25,75]]
-    return [useRating(num, cutoffs) for num in df[sentiment_column]]
+    return [useCutoffs(num, cutoffs) for num in df[sentiment_column]]
+
+
+if __name__ == '__main__':
+    # Load and prepare the ratings dataframe
+    connection = MongoClient()
+    db = connection.wta
+    df = mongo2PandasClean(db.trip_reports)
+
+    with open('../pickle/vectorizer.pkl', 'rb') as fid:
+        tfidf = pickle.load(fid)
+    with open('../pickle/SAmodel.pkl', 'rb') as fid:
+        model = pickle.load(fid)
+
+    df['sentiment_score'] = [detect_sentiment(t, tfidf, model) for t in df['Text']]
+    df['Rating'] = setRating(df, 'sentiment_score')
+
+    df.to_csv('../data/tripReports.csv')
