@@ -33,6 +33,7 @@ def pickleModel(model, fname):
     """Pickles model provided."""
     model.save(fname)
 
+
 def norm(df, col):
     """Normalized the give column of the provided dataframe"""
     df[col] = (df[col] - df[col].mean())/(df[col].max() - df[col].min())
