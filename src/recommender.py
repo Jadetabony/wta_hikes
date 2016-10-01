@@ -12,30 +12,25 @@ class hikeRecommender(object):
     def __init__(self, hikes, weights=None):
         self.hike_matrix = hikes
         self.feature_weights = weights
-        self.hikes_liked = []
+        self.hikes_liked = None
         self.hikes_disliked = []
-        self.recommendations = []
 
-    def hikeMatrix():
+    def likeHike(hike_id):
+        if not self.hikes_liked:
+            self.hikes_liked = self.hike_matrix.ix[hike_id]
+            self.hike_matrix = self.hike_matrix.drop(hike_id, axis=0).reset_index(drop=True)
+        else:
+            self.hikes_liked = self.hike_matrix.ix[hike_id]
+            self.hike_matrix = self.hike_matrix.drop(hike_id, axis=0).reset_index(drop=True)
 
-
-
-    def likeHike(hike_name):
-        self.hikes_liked.append(hike_name)
-
-    def recommend():
+    def recommend(n=5):
         # Calculate similarity to all of the hikes
         # average similarities
         # return top 5
-
-
-    def calculateSimilarity(X, y):
-        return cosine_similarity(X, y)
-
-                #Calculate similarity
-
-    def averageSimilarities(cs_matrix):
-        return cs_matrix.mean(axis=1)
-
-    def findClosest(csa_matrix):
-        
+        indx_id = self.hike_matrix('hike_id')
+        X = self.hike_matrix.drop('hike_id', axis=1)
+        y = self.hikes_liked.drop('hike_id', axis=1)
+        cs = cosine_similarity(X, y).mean(axis=1)
+        rec_index= np.argsort(cs[-n:][::-1])
+        recommendations = indx_id.ix[rec_index]
+        return recommendations
