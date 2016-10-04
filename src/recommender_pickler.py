@@ -1,71 +1,50 @@
-import graphlab as gl
+"""DOC STRING."""
+
+from recommender import itemContentRecommender
 import pandas as pd
-import numpy as np
 import cPickle as pickle
 
 
-def buildFactRecommender(sf, item_sf):
-    """Creates the recommender model from sf and item_sf.
+def buildItemContentRecommender(item_data, weights):
+    """Create the recommender model from item feature dataframe.
 
     Parameters:
 
-    sf: GraphLab SFrame.  Dataframe of hike id, user id and ratings.
-    item_sf: GraphLab SFrame.  Dataframe of the hike information.
+    item_data: Pandas Dataframe.  Dataframe of hike features.
+    weights: Dictionary.  Dictionary of weight to apply to each of item df columns.
     """
-    model = gl.recommender.ranking_factorization_recommender.create(sf, user_id='author_id',
-                                                                    item_id='hike_id', target='Rating',
-                                                                    regularization=1e-5,
-                                                                    linear_regularization=1e-8)
+    model = itemContentRecommender(item_data, weights=weights)
     return model
 
-def buildItemContentRecommender(item_sf, weights):
-    """Creates the recommender model from sf and item_sf.
+
+def normalize(item_data, col):
+    """Normalize the give column of the provided dataframe.
 
     Parameters:
 
-    sf: GraphLab SFrame.  Dataframe of hike id, user id and ratings.
-    item_sf: GraphLab SFrame.  Dataframe of the hike information.
+    item_data: Pandas Dataframe.  Dataframe of hike features.
+    col: String. Name of column to normalize.
     """
-    model = gl.recommender.item_content_recommender.create(item_sf, item_id='hike_id', weights=weights)
-    return model
-
-def pickleModel(model, fname):
-    """Pickles model provided."""
-    model.save(fname)
-
-
-def norm(df, col):
-    """Normalized the give column of the provided dataframe"""
-    df[col] = (df[col] - df[col].mean())/(df[col].max() - df[col].min())
+    item_data[col] = (item_data[col] - item_data[col].mean())/(item_data[col].max() - item_data[col].min())
 
 
 if __name__ == '__main__':
-    # Load and prepare the ratings dataframe
-    df = pd.read_csv(open('../data/tripReports.csv', 'rU'), encoding='utf-8', engine='c')
-    df = df.drop(labels=['Unnamed: 0', 'hike_name', 'Text', 'Date','Creator'], axis=1)
-    df = df.dropna()
-    df['hike_id'] = df['hike_id'].fillna(np.nan).astype(int)
-    df['author_id'] = df['author_id'].fillna(np.nan).astype(int)
-    sf = gl.SFrame(df)
-
     # Load and prepare the item dataframe
     item_data = pd.read_csv('../data/itemData.csv')
     item_data = item_data.drop(labels=['Unnamed: 0', 'hike_name'], axis=1)
-    norm(item_data, 'elevation gain')
-    norm(item_data, 'time_from_seattle')
-    norm(item_data, 'numReports')
-    norm(item_data, 'total_dist')
+    for col in [c for c in item_data.columns if c not in [u'hike_id']]:
+        normalize(item_data, col)
     item_data = item_data.dropna()
-    item_sf = gl.SFrame(item_data)
 
-    #load weights
+    # load weights
     with open('../pickle/weights.pkl', 'rb') as f:
         weights = pickle.load(f)
 
-    model = buildFactRecommender(sf, item_sf)
-    pickleModel(model, '../web_app/pickle/recommender.pkl')
-    print "Recommendation model pickled"
+    # build item content recommender model
+    ic_model = buildItemContentRecommender(item_data, weights)
 
-    ic_model = buildItemContentRecommender(item_sf, weights)
-    pickleModel(ic_model, '../web_app/pickle/itemcontrecommender.pkl')
+    # pickle the item content recommender model
+    with open('../pickle/ic_recommender.pkl', 'w') as pfp:
+        pickle.dump(ic_model, pfp)
+
     print "Item Recommendation model pickled"

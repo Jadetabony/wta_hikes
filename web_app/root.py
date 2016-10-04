@@ -71,8 +71,9 @@ def getNewRatings():
 
 @app.route('/my-recommendations', methods=['POST', 'GET'])
 def getRecs():
+    """DOC STRING."""
 	hike_id = hike_ider[request.args.get('hike-name')]
-	if request.args.get('username')=='':
+	if request.args.get('username') == '':
 		my_recs = ic_model.recommend_from_interactions([hike_id], k=5)
 		recs = db.hikes.find({"hike_id": {"$in": list(my_recs['hike_id'])}})
 	elif db.users.find({'username': request.args.get('username')}).count()==0:

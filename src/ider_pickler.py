@@ -1,7 +1,10 @@
+"""DOC STRING."""
 import pandas as pd
 import cPickle as pickle
 
+
 def pickleIder(df):
+    """DOC STRING."""
     ider = dict(zip(df['hike_name'], df['hike_id']))
     with open('pickle/ider.pkl', 'wb') as fid:
         pickle.dump(ider, fid)
