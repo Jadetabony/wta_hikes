@@ -1,12 +1,8 @@
 from flask import Flask, url_for, request, render_template, Markup,redirect
 from pymongo import MongoClient
-import graphlab as gl
-import pandas as pd
 #from src.sentimentAnalysis import detect_sentiment, Rating
-from datetime import date
 import cPickle as pickle
-import time
-import atexit
+from recommender import itemContentRecommender
 #from apscheduler.schedulers.background import BackgroundScheduler
 #from apscheduler.triggers.interval import IntervalTrigger
 
@@ -52,18 +48,11 @@ def reRunRecommender():
 
 @app.route('/')
 def root():
-	my_recs = fac_model.recommend(users=[db.users.count()+1], k=6)
-	recs = db.hikes.find({"hike_id": {"$in": list(my_recs['hike_id'])}})
-	return render_template('index.html', recs=recs)
+
+	return render_template('index.html')
 
 
-@app.route('/returning-user', methods=['GET', 'POST'])
-def getReturnRatings():
-	hikes = db.hikes.find({})
-	return render_template('recommender.html', hikes=hikes)
-
-
-@app.route('/new-user', methods=['GET', 'POST'])
+@app.route('/recommender', methods=['GET', 'POST'])
 def getNewRatings():
 	hikes = db.hikes.find({})
 	return render_template('recommender.html', hikes=hikes)
@@ -72,24 +61,12 @@ def getNewRatings():
 @app.route('/my-recommendations', methods=['POST', 'GET'])
 def getRecs():
     """DOC STRING."""
-	hike_id = hike_ider[request.args.get('hike-name')]
-	if request.args.get('username') == '':
-		my_recs = ic_model.recommend_from_interactions([hike_id], k=5)
-		recs = db.hikes.find({"hike_id": {"$in": list(my_recs['hike_id'])}})
-	elif db.users.find({'username': request.args.get('username')}).count()==0:
-		db.trip_reports.insert({'Creator': request.args.get('username'), 'Date': date.today().strftime("%B %d, %Y"), 'hike_name': request.args.get('hike-name'), 'Text': request.args.get('tripReport'),
-                       'author_id': db.users.count()+1, 'hike_id': hike_id, 'Rating': request.args.get('rating')})
-		my_recs = ic_model.recommend_from_interactions([hike_id], k=5)
-		recs = db.hikes.find({"hike_id": {"$in": list(my_recs['hike_id'])}})
-	else:
-		user = int(db.users.find_one({'username': request.args.get('username')})['id'])
-		db.trip_reports.insert({'Creator': request.args.get('username'), 'Date': date.today().strftime("%B %d, %Y"), 'hike_name': request.args.get('hike-name'), 'Text': request.args.get('tripReport'),
-                       'author_id': user, 'hike_id': hike_id, 'Rating': request.args.get('rating')})
-		new_instance = pd.DataFrame.from_dict({'hike_id': [hike_id], 'author_id': [user], 'Rating': [int(request.args.get('rating'))]})
-		sf = gl.SFrame(new_instance)
-		my_recs = fac_model.recommend(users=[user], new_observation_data=sf, k=5)
-		recs = db.hikes.find({"hike_id": {"$in": list(my_recs['hike_id'])}})
-	return render_template('my-recommendations.html', recs=recs)
+    hike_id = hike_ider[request.args.get('hike-name')]
+    ic_model.likeHike(hike_id)
+    my_recs = ic_model.recommend(5)
+    recs = db.hikes.find({"hike_id": {"$in": list(my_recs['hike_id'])}})
+
+    return render_template('my-recommendations.html', recs=recs)
 
 # Shut down the scheduler when exiting the app
 #atexit.register(lambda: scheduler.shutdown())
@@ -100,8 +77,10 @@ if __name__ == '__main__':
     # Connect to the database
     client = MongoClient()
     db = client['wta']
-    fac_model = gl.load_model('pickle/recommender.pkl')
-    ic_model = gl.load_model('pickle/itemcontrecommender.pkl')
+    with open('pickle/ic_recommender.pkl', 'rb') as icfp:
+        ic_model = pickle.load(icfp)
+
+
     # Get the fac_model
     with open('pickle/ider.pkl') as f:
     	hike_ider = pickle.load(f)

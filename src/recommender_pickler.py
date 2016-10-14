@@ -1,5 +1,4 @@
-"""DOC STRING."""
-
+"""Builds and pickles the recommender for the web application."""
 from recommender import itemContentRecommender
 import pandas as pd
 import cPickle as pickle
@@ -8,10 +7,10 @@ import cPickle as pickle
 def buildItemContentRecommender(item_data, weights):
     """Create the recommender model from item feature dataframe.
 
-    Parameters:
+    item_data (Pandas Dataframe):  Dataframe of hike features.
+    weights (Dictionary):  Dictionary of weight to apply to each of item df columns.
 
-    item_data: Pandas Dataframe.  Dataframe of hike features.
-    weights: Dictionary.  Dictionary of weight to apply to each of item df columns.
+    Output: Recommender model
     """
     model = itemContentRecommender(item_data, weights=weights)
     return model
@@ -20,10 +19,9 @@ def buildItemContentRecommender(item_data, weights):
 def normalize(item_data, col):
     """Normalize the give column of the provided dataframe.
 
-    Parameters:
 
-    item_data: Pandas Dataframe.  Dataframe of hike features.
-    col: String. Name of column to normalize.
+    item_data (Pandas Dataframe):  Dataframe of hike features.
+    col (String): Name of column to normalize.
     """
     item_data[col] = (item_data[col] - item_data[col].mean())/(item_data[col].max() - item_data[col].min())
 
