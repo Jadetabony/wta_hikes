@@ -6,3 +6,4 @@ $ cat .gitignore
 journal
 *.pyc
 Untitled.ipynb
+schema.md
