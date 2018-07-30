@@ -15,7 +15,9 @@ CREATE TABLE Hikes (
   , good_for_kids boolean
   , lakes boolean
   , mountain_views boolean
+  , num_votes numeric
   , old_growth boolean
+  , rating numeric
   , ridges_passes boolean
   , rivers boolean
   , summits boolean
@@ -28,11 +30,9 @@ CREATE TABLE Hikes (
 DROP TABLE IF EXISTS Tripreports CASCADE;
 CREATE TABLE Tripreports (
    author_id numeric
-  , creator_id numeric
   , create_date timestamptz
   , hike_id numeric
   , id SERIAL  PRIMARY KEY
-  , rating numeric
   , review_text text
 );
 
