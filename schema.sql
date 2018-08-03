@@ -31,6 +31,10 @@ DROP TABLE IF EXISTS Tripreports CASCADE;
 CREATE TABLE Tripreports (
    author_id numeric
   , create_date timestamptz
+  , trail_conditions text
+  , road text
+  , bugs text
+  , snow text
   , hike_id numeric
   , id SERIAL  PRIMARY KEY
   , review_text text
