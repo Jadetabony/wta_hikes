@@ -16,7 +16,7 @@ class IcodropsUpcomingSpiderTest(unittest.TestCase):
         #print(actual_urls)
         # self.assertEqual(actual_urls, expected_urls)
 
-    def test_gonetwork(self):
+    def test_hike_scraper(self):
         expected = {'AmountRaised': '$28,302,290',
                     'Bitcointalk': 'https://bitcointalk.org/index.php?topic=2352537.0;all',
                     'CurrencyAccepted': ' ETH, BTC',
