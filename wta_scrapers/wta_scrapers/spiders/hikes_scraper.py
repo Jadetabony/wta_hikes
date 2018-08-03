@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-import requests
 import scrapy
 from scrapy.loader import ItemLoader
-from bs4 import BeautifulSoup
 from ..items import WtaScrapersItem
 
 
