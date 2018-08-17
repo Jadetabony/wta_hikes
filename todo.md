@@ -1,21 +1,14 @@
 ## TODO
 
 #### Scrapers
-* rewrite scrapers
-    * paralellism
-    * use scrapy
-    * write to storage 
-        * buckets for soup
-        * psql for databases
-    * batching
+* Fix TR scraper name issue. Index error
     
 * ETL step
 * deploy scrapers on gcp
 * automatical update trip reports
 
 #### Testing
-* scraper tests
-* 
+
 
 #### Recommender
 * rewrite cosine similarity recommender to use numpy based function, rather than GL
@@ -41,3 +34,4 @@
         * hikes
         * trip reports
         * users
+* rewrite and rerun scraper - Hike description complete.
