@@ -74,7 +74,6 @@
           <div class="row">
               <div class="col-lg-12 text-center">
                   <h2 class="section-heading">Input a hike that you liked</h2>
-                  <p class="section-heading">If you already have a WTA username, list it for better recommendations.  </br>If not, leave username blank and input a hike that you liked.</p>
                   <hr class="primary">
               </div>
           </div>
@@ -83,31 +82,16 @@
               <div class="row">
                 <form action="my-recommendations" method="GET" id='hikeform'>
                      <div class="form-group col-lg-4">
-                         <label class='rating-form'>Hiker Username</label>
-                         <input type="text" name="username" class="form-control">
                       </br>
                          <label class='rating-form' >Hike Name</label>
                        </br>
                          <input list='hike-name' name='hike-name'>
                             <datalist id='hike-name'>
                               {% for h in hikes %}
-                              <option value="{{h.name}}">{{h.name}}</option>
+                              <option value="{{h}}">{{h}}</option>
                               {% endfor %}
                             </datalist>
                           </br>
-                         <label class='rating-form' >Trip Report</label>
-                          </br>
-                            <textarea name="tripReport" rows="10" cols="80"></textarea>
-                            </br>
-                         <label class='rating-form'>Hike Star Rating</label>
-                         </br>
-                         <div class="rating">
-                              <span><input type="radio" name="rating" id="str5" value="5"><label for="str5"></label></span>
-                              <span><input type="radio" name="rating" id="str4" value="4"><label for="str4"></label></span>
-                              <span><input type="radio" name="rating" id="str3" value="3"><label for="str3"></label></span>
-                              <span><input type="radio" name="rating" id="str2" value="2"><label for="str2"></label></span>
-                              <span><input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></span>
-                          </div>
                           <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
                           <script type="text/javascript">
 
@@ -155,7 +139,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                      <a href="http://jadetabony.com/2016/08/24/sentiment-analysis-rec-the-trail/">
+                      <a href="https://jadetabony.github.io/blog/2016/08/25/sentiment.html">
                         <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
                         <h3>Sentiment Analysis</h3>
                         </a>
@@ -164,7 +148,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                      <a href="https://jadetabony.com/2016/09/11/recommender-systems-rec-the-trail/">
+                      <a href="https://jadetabony.github.io/blog/2016/10/29/recommendation.html>
                         <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
                         <h3>Turi GraphLab</h3>
                       </a>
@@ -208,14 +192,6 @@
                                           <span class="fa-stack fa-lg">
                                               <i class="fa fa-circle fa-stack-2x"></i>
                                               <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-                                          </span>
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="https://twitter.com/TrailWonderland">
-                                          <span class="fa-stack fa-lg">
-                                              <i class="fa fa-circle fa-stack-2x"></i>
-                                              <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                                           </span>
                                       </a>
                                   </li>

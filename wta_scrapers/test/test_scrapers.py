@@ -13,7 +13,6 @@ class IcodropsUpcomingSpiderTest(unittest.TestCase):
 
         actual_urls = sorted([str(x.url) for x in results])
         print(actual_urls)
-        #print(actual_urls)
         # self.assertEqual(actual_urls, expected_urls)
 
     def test_hike_scraper(self):

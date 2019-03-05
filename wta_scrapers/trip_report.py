@@ -5,6 +5,7 @@ from collections import OrderedDict
 from selenium import webdriver
 import time
 
+
 class TripReportScraper(object):
 
     def __init__(self):

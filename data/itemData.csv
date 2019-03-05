@@ -1,4 +1,4 @@
-,hike_name,hike_id,numReports,total_dist,elevation gain,time_from_seattle,Coast,stars,Dogs allowed on leash,Established campsites,Fall foliage,Good for kids,Lakes,Mountain views,Old growth,Ridges/passes,Rivers,Summits,Waterfalls,Wildflowers/Meadows,Wildlife
+,hike_name,hike_id,numReports,total_dist,elevation,time_from_seattle,Coast,stars,Dogs allowed on leash,Established campsites,Fall foliage,Good for kids,Lakes,Mountain views,Old growth,Ridges/passes,Rivers,Summits,Waterfalls,Wildflowers/Meadows,Wildlife
 0,Grand Park via Lake Eleanor,0,212.0,8.0,1100.0,116.533333333,0,4.25,0,1,0,0,0,1,0,0,0,0,0,0,1
 1,Shellrock Pass,1,2.0,,,,0,2.33,1,0,0,0,0,0,0,0,0,0,0,0,0
 2,Soda Peaks Lake,2,24.0,7.0,2500.0,227.333333333,0,3.0,0,0,0,0,1,0,1,0,0,0,0,0,0

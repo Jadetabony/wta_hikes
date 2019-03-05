@@ -83,24 +83,24 @@
                   <table class="table" id="recommendations-table">
                                <tr>
                                    <th id='recommendations-table'>Hike Name</th>
-                                   <th id='recommendations-table'>Hike Region</th>
+                                   <!--<th id='recommendations-table'>Hike Region</th>-->
                                    <th id='recommendations-table'>Total Distance (miles)</th>
                                    <th id='recommendations-table'>Elevation Gain (ft)</th>
                                    <th id='recommendations-table'>Drive Time from Seattle (minutes)</th>
-                                   <th id='recommendations-table'>Pass Required?</th>
+                                   <!--<th id='recommendations-table'>Pass Required?</th>-->
                                </tr>
                                {% for r in recs %}
                                <tr>
-                                   <td><b><a href={{r.url}} target="_blank">{{r.name}}</a></b></td>
-                                   <td>{{r.region}}</td>
-                                   <td>{{r.total_dist}}</td>
-                                   <td>{{r.elevation}}</td>
-                                   <td>{{r.time_from_seattle}}</td>
-                                   <td>{{r.pass_required}}</td>
+                                   <td><b><a href="" target="_blank">{{r['hike_name']}}</a></b></td>
+                                   <!--<td>{{r.region}}</td>-->
+                                   <td>{{r['total_dist']}}</td>
+                                   <td>{{r['elevation']}}</td>
+                                   <td>{{r['time_from_seattle']}}</td>
+                                   <!--<td>{{r.pass_required}}</td>-->
                                </tr>
                                {% endfor %}
                        </table>
-                     <a href="/new-user" class="btn btn-primary btn-xl page-scroll">Search Another!</a>
+                     <a href="/returning-user" class="btn btn-primary btn-xl page-scroll">Search Another!</a>
                 </div>
             </div>
       </section>

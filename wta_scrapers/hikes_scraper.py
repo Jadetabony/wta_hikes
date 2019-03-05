@@ -43,17 +43,19 @@ class WtaHikeScraper(object):
         tree = html.fromstring(response.content)
         return tree
 
-    def parse_pages(self, response):
+    @staticmethod
+    def parse_pages(response):
         hike_pages = response.xpath("//*[@id='hike_results']/div/div/div/div/a/@href")
         return hike_pages
 
-    def parse_profiles(self, response, page):
+    @staticmethod
+    def parse_profiles(response, page):
         l = OrderedDict()
         
         # features
         hike_name = response.xpath("//h1[@class='documentFirstHeading']/text()")
         region = response.xpath("//div[@class='hike-stat grid_3 alpha']/div/text()")
-        if region == []:
+        if len(region) == 0:
             region = response.xpath("//div[@id='hike-region']/span/text()")
         distance = response.xpath("//div[@id='distance']/span/text()")
         elevation_gain = response.xpath("//div[@class='hike-stat']/div/span/text()")

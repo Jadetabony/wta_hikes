@@ -5,7 +5,7 @@
     
 * ETL step
 * deploy scrapers on gcp
-* automatical update trip reports
+* automatic update trip reports
 
 #### Testing
 
