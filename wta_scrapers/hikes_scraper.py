@@ -10,7 +10,7 @@ class WtaHikeScraper(object):
         self.name = 'hikes'
         self.page_interval = 30
         self.start_page = 'https://www.wta.org/go-outside/hikes'
-        self.data_file = '../data/wta_hike_data.tsv'
+        self.data_file = '../data/wta_hike_data_20200820.tsv'
 
     def parse_and_write(self):
         tree = self.get_html_tree(self.start_page)
@@ -28,14 +28,18 @@ class WtaHikeScraper(object):
                 for page in hike_pages:
                     print('Scraped {} hikes of {}\r'.format(counter, num_hikes))
                     response = self.get_html_tree(page)
-                    hike_info = self.parse_profiles(response, page)
-                    if headers is False:
-                        heads = '\t'.join(hike_info.keys())
-                        df.write('{}\n'.format(heads))
-                        headers = True
-                    vals = '\t'.join(hike_info.values())
-                    df.write('{}\n'.format(vals))
-                    counter += 1
+                    try:
+                        hike_info = self.parse_profiles(response, page)
+                        if headers is False:
+                            heads = '\t'.join(hike_info.keys())
+                            df.write('{}\n'.format(heads))
+                            headers = True
+                        vals = '\t'.join(hike_info.values())
+                        df.write('{}\n'.format(vals))
+                        counter += 1
+                    except:
+                        print("Skipping 1")
+                        continue
 
     @staticmethod
     def get_html_tree(page):
@@ -65,6 +69,10 @@ class WtaHikeScraper(object):
         pass_needed = response.xpath("//div[@class='alerts-and-conditions']/div/a/text()")
         description = ' '.join([r.strip().lstrip() for r in response.xpath("//div[@id='hike-body-text']/p/text()")])
         latlong = response.xpath("//a[@class='visualNoPrint full-map']/@href")
+        trip_reports_list = response.xpath("//span[@class='ReportCount']/text()")
+        count_tripreports = 0
+        if len(trip_reports_list) > 0:
+            count_tripreports = trip_reports_list[0]
 
         l['HikeName'] = hike_name[0]
         l['Region'] = region[0] if region else 'None'
@@ -91,14 +99,14 @@ class WtaHikeScraper(object):
         l['Wildlife'] = feature_present(features, 'wildlife')
         l['Url'] = page
         l['Rating'] = rating[0].split()[0] if rating else 'None'
-        l['NumVotes'] = number_votes[0].split()[0] if number_votes else 'None'
-
+        l['NumVotes'] = number_votes[0].split()[0].replace('(', '') if number_votes else 'None'
+        l['countTripReports'] = count_tripreports
         return l
 
 
 def feature_present(features, string):
     features_lower = [f.lower() for f in features]
-    return 'True' if string.lower() in features_lower else 'False'
+    return '1' if string.lower() in features_lower else '0'
 
 
 if __name__ == "__main__":
