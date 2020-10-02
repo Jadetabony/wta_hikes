@@ -63,6 +63,7 @@ class WtaHikeScraper(object):
             region = response.xpath("//div[@id='hike-region']/span/text()")
         distance = response.xpath("//div[@id='distance']/span/text()")
         elevation_gain = response.xpath("//div[@class='hike-stat']/div/span/text()")
+        highest_point = elevation_gain[1] if elevation_gain
         rating = response.xpath("//div[@class='current-rating']/text()")
         number_votes = response.xpath("//div[@class='rating-count']/text()")
         features = response.xpath("//div[@id='hike-features']/div/@data-title")
@@ -79,6 +80,7 @@ class WtaHikeScraper(object):
         l['Subregion'] = region[0] if region else 'None'
         l['TotalDistance'] = ' '.join(distance) if distance else 'None'
         l['ElevationGain'] = elevation_gain[0] if elevation_gain else 'None'
+        l['HighestPoint'] = highest_point if highest_point else 'None'
         l['Description'] = description
         l['PassNeeded'] = pass_needed[0] if pass_needed else 'None'
         l['LatLong'] = latlong[0] if latlong else 'None'
@@ -101,6 +103,12 @@ class WtaHikeScraper(object):
         l['Rating'] = rating[0].split()[0] if rating else 'None'
         l['NumVotes'] = number_votes[0].split()[0].replace('(', '') if number_votes else 'None'
         l['countTripReports'] = count_tripreports
+        energy_miles = None
+        if distance:
+            energy_miles = float(distance[0])
+            energy_miles += float(elevation_gain[0])/625 if elevation_gain
+            energy_miles = (1 + .00004 * float(highest_point)) * energy_miles if highest_point
+        l['EnergyMiles'] = energy_miles if energy_miles else 'None'
         return l
 
 

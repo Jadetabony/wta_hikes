@@ -52,6 +52,15 @@ Following data cleaning, I tried building my own sentiment analysis models using
       * Multinomial bayes
       * Decision tree
 
+### Energy Miles
+
+The energy miles feature is calculated from the hike's distance, elevation gain, and highest point and reflects Petzoldt's energy mile theory along with the results of the below studies. An energy mile is defined as a mile hiked at sea level with no elevation gain, and allows for a more precise difficulty comparison among hikes of different distances and elevation gains at particular elevations.
+
+1.6 energy miles are added for each 1000 feet of elevation gain. In addition, the total energy miles are increased by 4 percent per 1000 feet of elevation, to reflect a linear decrease in time to exhaustion at higher elevations.
+
+![The Validity of Petzoldt's Energy Mile Theory](https://digitalcommons.wku.edu/jorel/vol2/iss3/4/)
+![Linear decrease in .VO2max and performance with increasing altitude in endurance athletes](https://pubmed.ncbi.nlm.nih.gov/16311764/)
+
 ### Recommendation System
 
 The recommendation system is implemented using Turi GraphLab (now owned by Apple).  I tried three different types of recommendation systems:
