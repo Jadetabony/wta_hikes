@@ -1,0 +1,40 @@
+Backpack 1:
+
+All hikes in recommender at once:
+{'Cosine_recommendations': ['Lake Ann (Rainy Pass)', 'Red Top Lookout', 'Heather Lake (near Lake Wenatchee)', 'Suntop Lookout', 'Deception Pass State Park - Goose Rock'], 'Gower_recommendations': ['Pacific Crest Trail (PCT) Section J - Snoqualmie Pass to Stevens Pass', 'Pacific Crest Trail (PCT) Section I - White Pass to Snoqualmie Pass', 'Pacific Crest Trail (PCT) Section L - Rainy Pass to Manning Park', 'Boundary Trail', 'Lake Margaret']}
+One hike at a time, cosine:
+['Chuckanut Ridge Trail', 'Little Si', 'Skookum Flats', 'Low Mountain', 'Mount Pugh']
+One hike at a time, gower:
+['Panther Creek Falls', 'Sun Top Snowshoe', 'Gem Lake', 'Central Peak', 'Blue Lake']
+
+Backpack 2:
+All hikes in recommender at once:
+{'Cosine_recommendations': ['Twin Lakes (Wenatchee)', 'Lake Ann (Rainy Pass)', 'Spectacle Lake', 'Deception Pass', 'Gold Creek - Alaska Lake'], 'Gower_recommendations': ['Mailbox Peak - Old Trail', 'The Enchantments', 'Mount Adams South Climb', 'Luna Peak', 'Mailbox Peak']}
+One hike at a time, cosine:
+['Cathedral Pass Loop', 'Carne Mountain', 'South Tiger Mountain Loop', 'Bauerman Ridge', 'Cave Hole']
+One hike at a time, gower:
+['Pratt Lake Basin', 'Palisades', 'Surprise and Glacier Lakes', "West Tiger No. 1 via Dwight's Way", 'Carne Mountain']
+
+Backpack 3:
+All hikes in recommender at once:
+{'Cosine_recommendations': ['Peek-a-Boo Lake', 'Bagley Lakes', 'Cutthroat Lake', 'Heather Lake (near Lake Wenatchee)', 'Spruce Railroad Trail'], 'Gower_recommendations': ['Rattlesnake Ledge', 'Lake Serene', 'Heather Lake', 'Mount Pilchuck', 'Talapus and Olallie Lakes']}
+One hike at a time, cosine:
+['Chuckanut Ridge Trail', 'Nason Ridge Snowshoe', 'Little Si', "Eagle Lake Fisherman's Trail", 'Dege Peak']
+One hike at a time, gower:
+['Dege Peak', 'Heybrook Lookout', 'Excelsior Peak via Damfino Lakes Trail', 'Deep Lake', 'Mirror Lake via the Pacific Crest Trail (PCT)']
+
+Backpack 4:
+All hikes in recommender at once:
+{'Cosine_recommendations': ['Narada Falls to Reflection Lakes', 'Lily and Lizard Lake Loop', 'Cooper River', "Eagle Lake Fisherman's Trail", 'Skookum Flats'], 'Gower_recommendations': ['Camp Muir', 'Lake Serene', 'Castle Pass', 'LaCrosse Basin', 'Nursery Peak']}
+One hike at a time, cosine:
+['Mount Pugh', 'Narada Falls to Reflection Lakes', 'Mount Higgins', 'Skookum Flats']
+One hike at a time, gower:
+['Narada Falls to Reflection Lakes', 'Mount Higgins', 'Skookum Flats', 'Mount Pugh']
+
+Backpack 5:
+All hikes in recommender at once:
+{'Cosine_recommendations': ['Peek-a-Boo Lake', 'Lake Ann (Rainy Pass)', 'American Lake', 'Heather Lake (near Lake Wenatchee)', 'Nooksack Cirque'], 'Gower_recommendations': ['Lake Serene', 'Mount Pilchuck', 'Heather Lake', 'Mount Si', 'Mailbox Peak - Old Trail']}
+One hike at a time, cosine:
+['Cave Hole', 'Palouse to Cascades Trail - The Tunnel', 'The Brothers', 'Surprise and Glacier Lakes', 'Whiskey Dick Wildlife Area - Bluebird Trail']
+One hike at a time, gower:
+['The Brothers', 'Surprise and Glacier Lakes', 'Whiskey Dick Wildlife Area - Bluebird Trail', 'Cave Hole', 'Palouse to Cascades Trail - The Tunnel']
